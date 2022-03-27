@@ -23,11 +23,18 @@ const StyledInput = styled.TextInput.attrs(({theme})=>({
     width: ${({width})=> width-40}px;
     `;
 
-const Input = ({placeholder,value, onChangeText, onSubmitEditing}) =>{
+const Input = ({
+        placeholder,
+        value, 
+        onChangeText, 
+        onSubmitEditing, 
+        onBlur,
+    }) =>{
     // Dimensions를 사용할 경우
     const width = Dimensions.get('window').width;
     // useWindowDimmensions를 사용할 경우
     // const width = useWindowDimensions().width;
+
     return <StyledInput 
         width={width} 
         placeholder={placeholder} 
@@ -45,6 +52,7 @@ const Input = ({placeholder,value, onChangeText, onSubmitEditing}) =>{
         value={value}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmitEditing}
+        onBlur={onBlur}
     />
 }
 
@@ -54,6 +62,7 @@ Input.proptypes={
     value:PropTypes.string.isRequired,
     onChangeText:PropTypes.func.isRequired,
     onSubmitEditing:PropTypes.func.isRequired,
+    onBlur:PropTypes.func.isRequired,
 }
 
 export default Input
